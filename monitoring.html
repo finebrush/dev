@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="./css/myStyle.css">
+        <link rel="stylesheet" href="./css/webglStyle.css">
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+      
+        <script src="TemplateData/UnityProgress.js"></script>
+        <script src="Build/UnityLoader.js"></script>
+        <script>
+            var unityInstance = UnityLoader.instantiate("unityContainer", "Build/webGL.json", {onProgress: UnityProgress});
+        </script>
+
+  </head>
+  <body style="margin: 0px;">
+
+    <div class="bgpic">
+        <!-- Title -->
+        <div class="bgpic-title" id="titleimag"><img src="./images/title01.png"></div>
+
+        <!-- Date / Time -->
+        <div class="dateStyle" id="dateStyle" style="position:absolute; right:274px; top:47px;">
+            <font style="font-size:1.3em; font-weight:bold; color:#f3c869;" > DATE </font> </div>
+        <div class="dateText" style="position:absolute; right:215px; top:67px;">
+            <font id="dateText" style="font-size:1.8em; font-weight:300; color:#fff;" > 2019.9.26. </font> </div>
+        <div class="timeStyle" id="timeStyle" style="position:absolute; right:105px; top:47px;">
+            <font style="font-size:1.3em; font-weight:bold; color:#f9f20c;" > TIME </font> </div>
+        <div class="timeText" style="position:absolute; right:60px; top:67px;">
+            <font id="timeText" style="font-size:1.8em; font-weight:300; color:#fff;" > 20:35:19 </font> </div>
+
+        <!-- WebGL view -->
+        <div class="webgl-content">
+            <div id="unityContainer" style="width: 1830px; height: 620px"></div>
+        </div>
+
+        <!-- Sub Title -->
+        <div class="subtitle" id="subtitle1"><img src="./images/subtitle05.png"></div>
+        
+        <!-- Mini Map -->
+        <div class="minmap" id="minmap"><img src="./images/minmap.png"></div>
+
+        <!-- Table Image1 -->
+        <div class="subTable" id="subTable1"><img src="./images/subMonitoring.png"></div>
+
+
+
+        <div id="containTable1">
+            <div class="subtitle" id="subtitle2" style="left:1320px;"><img src="./images/subtitle03-1.png"></div>
+            <!-- Table Image2 -->
+            <div class="subTable" id="subTable2" style="left:1098px;"><img src="./images/subMonitoringBg.png"></div>
+
+        <!-- table start -->
+            <div class="table01" id="table01" style="left:1230px;">
+                
+                <table class="type10" id="table-one" style="height:100%; width:100%; margin:0px;">
+                    <tr>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>104</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>96</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">44</td>
+                        <td class="yellow">24</td>
+                        <td class="yellow">200</td>
+                        <td class="yellow">80</td>
+                    </tr>
+                </table>
+                
+            </div>
+        <!-- table end -->
+
+            <div id="upNum" style="width:100px; height:60px; position:absolute; left:1720px; bottom:130px; color:#ffba00; font-size:3.5em; text-align:center;">24</div>
+            <div id="downNum" style="width:100px; height:60px; position:absolute; left:1720px; bottom:65px; color:#00daff; font-size:3.5em; text-align:center;">24</div>
+        </div>
+
+
+
+        <div id="containTable2" style="display:none;">
+            <div class="subtitle" id="subtitle3" style="left:1320px;"><img src="./images/subtitle04-01.png"></div>
+            <!-- Table Image2 -->
+            <div class="subTable" id="subTable3" style="left:1098px;"><img src="./images/subMonitoringBg02.png"></div>
+
+            <div id="attention" style="width:100px; height:60px; position:absolute; left:1175px; bottom:133px; color:#ffba00; font-size:4em; text-align:center;">31</div>
+            <div id="cpu" style="width:100px; height:60px; position:absolute; left:1435px; bottom:145px; color:#fff; font-size:2.5em; text-align:center;">41.3도</div>
+            <div id="mainboard" style="width:100px; height:60px; position:absolute; left:1700px; bottom:145px; color:#fff; font-size:2.5em; text-align:center;">32.7도</div>
+            <div id="motor" style="width:100px; height:60px; position:absolute; left:1435px; bottom:40px; color:#fff; font-size:2.5em; text-align:center;">198</div>
+            <div id="tok" style="width:100px; height:60px; position:absolute; left:1700px; bottom:40px; color:#fff; font-size:2.5em; text-align:center;">86</div>
+        </div>
+
+
+
+
+        <div id="backbtn" style="position:absolute; width:60px; height:60px; top:170px; left:70px;"><img src="./images/icon_back.png" style="width:100%;"></div>
+    </div>
+
+
+    <script>
+        function updateClock() {
+            var d = new Date();
+            var pickdate = document.getElementById('dateText');
+            var picktime = document.getElementById('timeText');
+            //console.log(pickdate.innerHTML);
+            pickdate.innerHTML = d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate() + '.';
+            picktime.innerHTML = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+        }
+        setInterval(updateClock, 1000);
+        
+        var tableOne = document.getElementById('table-one');
+        var tabelTitle = document.getElementById('subtitle2');
+        var tableTitle1 = document.getElementById('subtitle3');
+        var titleNum = 1;
+
+        var numView = 0;
+        //console.log(numView);
+
+        //console.log(tabelTitle.innerHTML);
+        function myTimer(){
+            // unity 함수에 변경값 전달...먼저 실행되야 unity와 html 번호가 같게 돌아감..
+            unityInstance.SendMessage('EventCotroller', 'onClickTransition', titleNum);
+
+            // subTitle 변경...
+            if(titleNum < 4){
+                tabelTitle.innerHTML = "<img src='./images/subtitle03-" + titleNum + ".png'>";
+                titleNum = titleNum + 1;
+            }else {
+                tabelTitle.innerHTML = "<img src='./images/subtitle03-" + titleNum + ".png'>";
+                titleNum = 1;
+            }
+
+
+            // table >> 테이블 셀 데이터 변경
+            for(i = 0; i < 2; i++){
+                for(j = 0; j < 4; j++){
+                    //1 ~ 150까지의 랜덤한 수를 테이블 셀에 넣는다.
+                    tableOne.rows[i].cells[j].innerHTML = Math.floor((Math.random() * 150) + 1);
+                }
+            }
+
+            //합계 구해서 해당 셀에 넣는다.
+            for(n = 0; n < 4; n++){
+                var cella = tableOne.rows[0].cells[n].innerHTML;
+                var cellb = tableOne.rows[1].cells[n].innerHTML;
+                tableOne.rows[2].cells[n].innerHTML = parseInt(cella) + parseInt(cellb);
+                //console.log(tableOne.rows[2].cells[celly].innerHTML);
+            }
+
+            // div tag >> 용접작업 진행 현황 데이터 변경
+            var txtWT = document.getElementById('upNum');
+            var txtAT = document.getElementById('downNum');
+
+            txtWT.innerHTML = Math.floor((Math.random() * 20) + 20);
+            txtAT.innerHTML = Math.floor((Math.random() * 30) + 40); // (Math.random() * max-min)+min -> 최소 min에서 최대 max+min까지...
+
+        }
+        setInterval(myTimer, 3000);
+        //console.log(tableOne.rows[0].cells[0]);
+
+        var titleNum1 = 1;
+        function myTimer2(){
+            // subTitle 변경...
+            if(titleNum1 < 8){
+                if(titleNum1 == 1){ // 1이 될때 마지막 robot(6번) highlight off..
+                    unityInstance.SendMessage('EventCotroller', 'robotHighlight', 7);
+                }
+                // unity 함수에 변경값 전달...
+                unityInstance.SendMessage('EventCotroller', 'robotHighlight', titleNum1-1);
+
+                tableTitle1.innerHTML = "<img src='./images/subtitle04-0" + titleNum1 + ".png'>";
+                titleNum1 = titleNum1 + 1;
+            }else {
+                //tableTitle1.innerHTML = "<img src='./images/subtitle04-0" + titleNum1 + ".png'>";
+                titleNum1 = 1;
+            }
+
+            // div tag >> 용접작업 진행 현황 데이터 변경
+            var txtAttention = document.getElementById('attention');
+            var txtCPU = document.getElementById('cpu');
+            var txtMB = document.getElementById('mainboard');
+            var txtMotor = document.getElementById('motor');
+            var txtTok = document.getElementById('tok');
+
+            txtAttention.innerHTML = Math.floor((Math.random() * 60) + 30);
+            txtCPU.innerHTML = Math.floor((Math.random() * 30) + 40) + "도";
+            txtMB.innerHTML = Math.floor((Math.random() * 30) + 30) + "도";
+            txtMotor.innerHTML = Math.floor((Math.random() * 80) + 120);
+            txtTok.innerHTML = Math.floor((Math.random() * 50) + 40);
+
+        }
+        setInterval(myTimer2, 3000);
+
+        // Back button 눌렸을 때..
+        $("#backbtn").click(function(){
+            if(numView == 0){
+                history.back();
+            }
+
+            if(numView == 1){
+                document.getElementById('subtitle1').innerHTML = "<img src='./images/subtitle05.png'>";
+
+                document.getElementById('containTable1').style.display = "block";
+                document.getElementById('containTable2').style.display = "none";
+
+                unityInstance.SendMessage('EventCotroller', 'BackView', 1);
+                numView = 0;
+            }
+        });
+
+        // unity에서 'N-BAY' 오브젝을 클릭했을 때.. 
+        function unityMessage(){
+            //console.log("ok!!");
+            numView = 1;
+
+            document.getElementById('subtitle1').innerHTML = "<img src='./images/subtitle03-2.png'>";
+
+            document.getElementById('containTable1').style.display = "none";
+            document.getElementById('containTable2').style.display = "block";
+            
+
+        }
+
+    </script>
+
+    </body>
+</html>

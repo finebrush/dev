@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <Title> 현대중공업 시뮬레이터 페이지 </Title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBC5eeOEnJO3Nc9TYp-B0M6jpSrm6u1Gyc",
+        authDomain: "hotelbot-6af88.firebaseapp.com",
+        databaseURL: "https://hotelbot-6af88.firebaseio.com",
+        projectId: "hotelbot-6af88",
+        storageBucket: "hotelbot-6af88.appspot.com",
+        messagingSenderId: "355451153188"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body>
+    <p>작업 결과 :  <span id="showdata"></span></p>
+
+    <input type="button" id="Flow" style="width: 100%; height: 40%; font-size: 50px;" value="그래프 시작" />
+    <input type="button" id="Finish" style="width:100%;height:40%; font-size: 50px;" value="작업 끝내기" onclick="dataUpdate()"/>
+
+    <div id="numDay" style="display: none;"></div>
+    <div id="numStack" style="display: none;"></div>
+
+    <script>
+
+        const numDay = document.getElementById('numDay');
+        const numStack = document.getElementById('numStack');
+
+        //firebase 의 등록한 필드을 선택 --> 선택한 필드를 on()으로 실시간 싱크(리스터이벤트) : 읽어오기
+        var dbRefDay = firebase.database().ref().child('WeDas/countDay');
+        dbRefDay.on('value', snap => {
+            numDay.innerText = snap.val();
+        });
+
+        var dbRefStack = firebase.database().ref().child('WeDas/countStack');
+        dbRefStack.on('value', snap => {
+            numStack.innerText = snap.val();
+        });
+
+        //firebase update --->
+        function dataUpdate(){
+            //numDay.innerHTML = parseInt(numDay.innerHTML) + 1;
+            var updates = {};
+            updates['WeDas/countDay'] = parseInt(numDay.innerHTML) + 1;
+            updates['WeDas/countStack'] = parseInt(numStack.innerHTML) + 1
+            firebase.database().ref().update(updates);
+        }
+
+    </script>
+
+</body>
+</html>

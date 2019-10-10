@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="./css/myStyle.css">
+
+      <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBC5eeOEnJO3Nc9TYp-B0M6jpSrm6u1Gyc",
+          authDomain: "hotelbot-6af88.firebaseapp.com",
+          databaseURL: "https://hotelbot-6af88.firebaseio.com",
+          projectId: "hotelbot-6af88",
+          storageBucket: "hotelbot-6af88.appspot.com",
+          messagingSenderId: "355451153188"
+        };
+        firebase.initializeApp(config);
+      </script>
+
+  </head>
+  <body style="margin: 0px;">
+
+    <div class="bgpic">
+      <div class="txt-carrige" id="txtca">정상</div>
+      <div class="txt-tochi" id="txttochi">정상</div>
+      <div class="txt-day" id="txtday">30명</div>
+      <div class="txt-stack" id="txtstack">1,170명</div>
+
+      <div class="txt-worktime" id="txtworktime">20h</div>
+      <div class="txt-arctime" id="txtarctime">20h</div>
+      <div class="txt-arcperc" id="txtarcperc">42%</div>
+      <div class="txt-perfperc" id="txtperfperc">52%</div>
+
+<!-- table start -->
+      <div class="table01" id="table01">
+          <div class="tablebg01" id="tablebg01"></div>
+          <div class="tablebg02" id="tablebg02"></div>
+          <div class="tablebg02" id="tablebg02" style="top:95px;"></div>
+          <div class="tablebg03" id="tablebg03"></div>
+          <div class="tablein" id="tablein">
+            <table class="type10" id="table-1">
+                <thead>
+                    <tr>
+                        <th scope="cols">용접기</th>
+                        <th scope="cols">수량</th>
+                        <th scope="cols">아크수</th>
+                        <th scope="cols">작업자수</th>
+                        <th scope="cols">작업시간</th>
+                        <th scope="cols">아크시간</th>
+                        <th scope="cols">아크율(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>캐리지</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>104</td>
+                        <td>40</td>
+                        <td>20</td>
+                        <td class="green">100%</td>
+                    </tr>
+                    <tr>
+                        <td>토치</td>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>96</td>
+                        <td>40</td>
+                        <td>16</td>
+                        <td class="green">80%</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">합계</td>
+                        <td class="yellow">44</td>
+                        <td class="yellow">24</td>
+                        <td class="yellow">200</td>
+                        <td class="yellow">80</td>
+                        <td class="yellow">36</td>
+                        <td class="green">90%</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+<!-- table end -->
+<!-- table start -->
+      <div class="table01" id="table01" style="top:425px">
+          <div class="tablebg01" id="tablebg01"></div>
+          <div class="tablebg02" id="tablebg02"></div>
+          <div class="tablebg02" id="tablebg02" style="top:95px;"></div>
+          <div class="tablebg03" id="tablebg03"></div>
+          <div class="tablein" id="tablein">
+            <table class="type10" id="table-2">
+                <thead>
+                    <tr>
+                        <th scope="cols">용접기</th>
+                        <th scope="cols">수량</th>
+                        <th scope="cols">아크수</th>
+                        <th scope="cols">작업자수</th>
+                        <th scope="cols">작업시간</th>
+                        <th scope="cols">아크시간</th>
+                        <th scope="cols">아크율(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>캐리지</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>104</td>
+                        <td>40</td>
+                        <td>20</td>
+                        <td class="green">100%</td>
+                    </tr>
+                    <tr>
+                        <td>토치</td>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>96</td>
+                        <td>40</td>
+                        <td>16</td>
+                        <td class="green">80%</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">합계</td>
+                        <td class="yellow">44</td>
+                        <td class="yellow">24</td>
+                        <td class="yellow">200</td>
+                        <td class="yellow">80</td>
+                        <td class="yellow">36</td>
+                        <td class="green">90%</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+<!-- table end -->
+<!-- table start -->
+      <div class="table01" id="table01" style="top:615px">
+          <div class="tablebg01" id="tablebg01"></div>
+          <div class="tablebg02" id="tablebg02"></div>
+          <div class="tablebg02" id="tablebg02" style="top:95px;"></div>
+          <div class="tablebg03" id="tablebg03"></div>
+          <div class="tablein" id="tablein">
+            <table class="type10" id="table-3">
+                <thead>
+                    <tr>
+                        <th scope="cols">용접기</th>
+                        <th scope="cols">수량</th>
+                        <th scope="cols">아크수</th>
+                        <th scope="cols">작업자수</th>
+                        <th scope="cols">작업시간</th>
+                        <th scope="cols">아크시간</th>
+                        <th scope="cols">아크율(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>캐리지</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>104</td>
+                        <td>40</td>
+                        <td>20</td>
+                        <td class="green">100%</td>
+                    </tr>
+                    <tr>
+                        <td>토치</td>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>96</td>
+                        <td>40</td>
+                        <td>16</td>
+                        <td class="green">80%</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">합계</td>
+                        <td class="yellow">44</td>
+                        <td class="yellow">24</td>
+                        <td class="yellow">200</td>
+                        <td class="yellow">80</td>
+                        <td class="yellow">36</td>
+                        <td class="green">90%</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+<!-- table end -->
+<!-- table start -->
+      <div class="table01" id="table01" style="top:805px">
+          <div class="tablebg01" id="tablebg01"></div>
+          <div class="tablebg02" id="tablebg02"></div>
+          <div class="tablebg02" id="tablebg02" style="top:95px;"></div>
+          <div class="tablebg03" id="tablebg03"></div>
+          <div class="tablein" id="tablein">
+            <table class="type10" id="table-4">
+                <thead>
+                    <tr>
+                        <th scope="cols">용접기</th>
+                        <th scope="cols">수량</th>
+                        <th scope="cols">아크수</th>
+                        <th scope="cols">작업자수</th>
+                        <th scope="cols">작업시간</th>
+                        <th scope="cols">아크시간</th>
+                        <th scope="cols">아크율(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>캐리지</td>
+                        <td>20</td>
+                        <td>10</td>
+                        <td>104</td>
+                        <td>40</td>
+                        <td>20</td>
+                        <td class="green">100%</td>
+                    </tr>
+                    <tr>
+                        <td>토치</td>
+                        <td>24</td>
+                        <td>14</td>
+                        <td>96</td>
+                        <td>40</td>
+                        <td>16</td>
+                        <td class="green">80%</td>
+                    </tr>
+                    <tr>
+                        <td class="yellow">합계</td>
+                        <td class="yellow">44</td>
+                        <td class="yellow">24</td>
+                        <td class="yellow">200</td>
+                        <td class="yellow">80</td>
+                        <td class="yellow">36</td>
+                        <td class="green">90%</td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+      </div>
+<!-- table end -->
+
+
+<!-- Chart start -->
+        <div class="chart" id="graph-1-container">
+          <div class="chart-svg">
+            <svg class="chart-line" id="chart-1" viewBox="0 0 80 40">
+              <defs>
+                <clipPath id="clip" x="0" y="0" width="80" height="40" >
+                  <rect id="clip-rect" x="-80" y="0" width="77" height="38.7"/>
+                </clipPath>
+
+                  <linearGradient id="gradient-1">
+                      <stop offset="0" stop-color="#00d5bd" />
+                      <stop offset="100" stop-color="#24c1ed" />
+                  </linearGradient>
+
+                  <linearGradient id="gradient-2">
+                      <stop offset="0" stop-color="#954ce9" />
+                      <stop offset="0.3" stop-color="#954ce9" />
+                      <stop offset="0.6" stop-color="#24c1ed" />
+                      <stop offset="1" stop-color="#24c1ed" />
+                  </linearGradient>
+
+                  <linearGradient id="gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">>
+                      <stop offset="0" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.07"/>
+                      <stop offset="0.5" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0.13"/>
+                      <stop offset="1" stop-color="rgba(0, 213, 189, 1)" stop-opacity="0"/>
+                  </linearGradient>
+
+                  <linearGradient id="gradient-4" x1="0%" y1="0%" x2="0%" y2="100%">>
+                      <stop offset="0" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.07"/>
+                      <stop offset="0.5" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0.13"/>
+                      <stop offset="1" stop-color="rgba(149, 76, 233, 1)" stop-opacity="0"/>
+                  </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <div class="chart" id="graph-2-container">
+          <div class="chart-svg">
+            <svg class="chart-line" id="chart-2" viewBox="0 0 80 40">
+            </svg>
+          </div>
+        </div>
+<!-- Chart end -->
+
+    </div>
+
+    <script src="./js/myChart.js"></script>
+    <script>
+        //var tableOne = document.getElementById('table-one');
+        function myTimer(){
+            //테이블 셀 데이터 변경
+            for(i = 1; i < 5; i++){
+                var tableVar = document.getElementById('table-' + i);
+                var cellx = Math.floor((Math.random() * 2) + 1);
+                var celly = Math.floor((Math.random() * 5) + 1);
+                //console.log(cellx + ',' + celly);
+
+                //1 ~ 150까지의 랜덤한 수를 테이블 셀에 넣는다.
+                tableVar.rows[cellx].cells[celly].innerHTML = Math.floor((Math.random() * 150) + 1);
+
+                //합계 구해서 해당 셀에 넣는다.
+                var cella = tableVar.rows[1].cells[celly].innerHTML
+                var cellb = tableVar.rows[2].cells[celly].innerHTML
+                tableVar.rows[3].cells[celly].innerHTML = parseInt(cella) + parseInt(cellb);
+                //console.log(tableOne.rows[2].cells[celly].innerHTML);
+
+                //아크율 변경하기 ... 50 ~ 100의 임의 수
+                var cellarcx = tableVar.rows[1].cells[6].innerHTML = Math.floor((Math.random() * 50) + 50) + "%";
+                var cellarcy = tableVar.rows[2].cells[6].innerHTML = Math.floor((Math.random() * 50) + 50) + "%";
+                tableVar.rows[3].cells[6].innerHTML = ((parseInt(cellarcx) + parseInt(cellarcy)) / 2) + "%";
+            }
+
+            //용접작업 진행 현황 데이터 변경
+            var txtWT = document.getElementById('txtworktime');
+            var txtAT = document.getElementById('txtarctime');
+            var txtAP = document.getElementById('txtarcperc');
+            var txtST = document.getElementById('txtperfperc');
+
+            txtWT.innerHTML = Math.floor((Math.random() * 100) + 1) + "h";
+            txtAT.innerHTML = Math.floor((Math.random() * 100) + 1) + "h";
+            txtAP.innerHTML = Math.floor((Math.random() * 70) + 30) + "%";
+            txtST.innerHTML = Math.floor((Math.random() * 70) + 30) + "%";
+
+            //용접봉 소모량, 실적 그래프 변경 **********
+            //기존 그래프 삭제
+            document.getElementById('graph-1').remove();
+            document.getElementById('graph-2').remove();
+            document.getElementById('poly-1').remove();
+            document.getElementById('poly-2').remove();
+            //새로운 dataset 생성
+            for(i = 0; i < 14; i++){
+                chart_1_y[i] = Math.floor(Math.random() * 90) + 10;
+                chart_2_y[i] = Math.floor(Math.random() * 90) + 10;
+            }
+            //라인그래프 새롭게 그리기
+            drawLineGraph('#chart-1', chart_1_y, '#graph-1-container', 1);
+            drawLineGraph('#chart-2', chart_2_y, '#graph-2-container', 2);
+
+        }
+        setInterval(myTimer, 3000);
+        //console.log(tableOne.rows[0].cells[0]);
+
+        const numDay = document.getElementById('txtday');
+        const numStack = document.getElementById('txtstack');
+
+        //firebase 의 등록한 필드을 선택 --> 선택한 필드를 on()으로 실시간 싱크(리스터이벤트) : 읽어오기
+        var dbRefDay = firebase.database().ref().child('WeDas/countDay');
+        dbRefDay.on('value', snap => {
+            numDay.innerText = snap.val() + "명";
+        });
+
+        var dbRefStack = firebase.database().ref().child('WeDas/countStack');
+        dbRefStack.on('value', snap => {
+            numStack.innerText = snap.val() + "명";
+        });
+
+    </script>
+
+    </body>
+</html>

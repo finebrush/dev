@@ -1,0 +1,753 @@
+body {
+    background-color: #f6f6f6;
+    font-size: 13px;
+    letter-spacing: 0.02rem;
+    overflow: auto;
+}
+
+h6 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.card,
+.card-panel {
+    box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.16);
+}
+
+.container-fluid {
+    padding: 1rem 1.5rem;
+    max-width: 1000px;
+}
+
+.row {
+    margin: 0 -0.75rem;
+}
+
+@media only screen and (min-width: 993px) {
+    .main {
+        background-image: url('../images/background.png');
+        width: 100%;
+        height: 100%;
+        padding-left: 250px;
+    }
+}
+
+
+/* nav */
+
+nav {
+    background-color: #202124;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    ul a {
+        padding: 0 12px;
+    }
+    ul a img {
+        line-height: 56px;
+        vertical-align: middle;
+    }
+}
+
+nav,
+nav .nav-wrapper i,
+.navbar-fixed {
+    height: 56px;
+    line-height: 56px;
+}
+
+.nav-wrapper {
+    ul a:hover {
+        background-color: transparent;
+    }
+    li:first-child a {
+        padding-left: 24px;
+    }
+    .title {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* sidenav */
+
+.side-nav {
+    .divider {
+        margin: 8px 0;
+    }
+    .active {
+        background-color: rgba(0, 0, 0, 0.05);
+        a {
+            color: #212121;
+            font-weight: 500;
+        }
+    }
+    .subheader {
+        line-height: 24px;
+        height: 32px;
+        margin: 0;
+        padding: 4px 16px;
+        color: #616161;
+        font-weight: normal;
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width: 993px) {
+    .side-nav {
+        width: 250px;
+        top: 66px;
+        padding: 12px 8px !important;
+        height: calc(100% - 56px);
+        li>a,
+        li>a>i.material-icons {
+            height: 40px;
+            line-height: 40px;
+        }
+        li>a>i.material-icons {
+            margin-right: 24px;
+        }
+        li>a {
+            padding: 0 16px;
+            font-weight: normal;
+            font-size: 13px;
+            color: #616161;
+        }
+        li>a:hover {
+            border-radius: 2px;
+        }
+    }
+}
+
+
+/* cards */
+
+.card {
+    .card-action {
+        border-top: none;
+        a {
+            color: #fff !important;
+        }
+    }
+    .card-text {
+        width: calc(100% - 60px);
+    }
+    .card-icon i {
+        width: 100%;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
+
+table {
+    font-size: 13px;
+    td:first-of-type,
+    th:first-of-type {
+        padding-left: 24px;
+    }
+    td:last-of-type,
+    th:last-of-type {
+        padding-right: 24px;
+    }
+    &.bordered>thead,
+    &.bordered>tbody>tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    tr:last-child {
+        border-bottom: none;
+    }
+}
+
+table.type10 {
+    font-size: 15px;
+    font-weight: bold;
+    border-collapse: collapse;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+table.type10 thead th {
+    position: relative;
+    width: 150px;
+    padding: 18px 10px 15px 10px;
+    font-weight: lighter;
+    vertical-align: middle;
+    color: #fff;
+    /*    background: #e7708d;  */
+    margin: 20px 10px;
+    font-size: inherit;
+    z-index: 1024;
+}
+
+table.type10 tbody th {
+    width: 150px;
+    padding: 10px;
+}
+
+table.type10 td {
+    position: relative;
+    width: 14.28%;
+    vertical-align: middle;
+    color: white;
+}
+
+table.type10 td.yellow {
+    color: yellow;
+}
+
+table.type10 td.green {
+    color: #01ea01;
+    font-weight: bold;
+}
+
+table.type10 .even {
+    background: #fdf3f5;
+}
+
+.table01 {
+    position: absolute;
+    bottom: 48px;
+    height: 155px;
+    width: 440px;
+}
+
+.tablebg01 {
+    position: absolute;
+    width: 702px;
+    height: 40px;
+    top: 8px;
+    left: 5px;
+    background: #1a5ef7;
+    border-radius: 4px;
+    border: 2px solid #569cf3c7;
+    -moz-box-shadow: inset 12px 12px 12px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 20px 20px 20px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 18px 18px rgba(255, 255, 255, 0), inset -2px -18px 18px rgba(0, 0, 0, .7);
+}
+
+.tablebg02 {
+    position: absolute;
+    width: 702px;
+    height: 40px;
+    top: 60px;
+    left: 5px;
+    background: #484848;
+    border-radius: 4px;
+    border: 2px solid #000000;
+}
+
+.tablebg03 {
+    position: absolute;
+    width: 702px;
+    height: 40px;
+    top: 170px;
+    left: 5px;
+    background: #0c365d;
+    border-radius: 4px;
+    border: 2px solid #2876bf;
+}
+
+.bgpic {
+    position: absolute;
+    background-image: url('../images/background.png');
+    background-size: cover;
+    width: 1920px;
+    height: 1080px;
+    resize: both;
+    overflow: auto;
+}
+
+.mainbgpic {
+    position: absolute;
+    background-image: url('../images/backgroundmain.png');
+    background-size: cover;
+    width: 1920px;
+    height: 1080px;
+    resize: both;
+    overflow: auto;
+}
+
+.bgpic-title {
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    resize: both;
+    overflow: auto;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.txt-carrige {
+    position: absolute;
+    top: 316px;
+    left: 231px;
+    width: 200px;
+    color: white;
+    font-size: 25px;
+}
+
+.txt-tochi {
+    position: absolute;
+    top: 316px;
+    left: 415px;
+    width: 200px;
+    color: white;
+    font-size: 25px;
+}
+
+.txt-day {
+    position: absolute;
+    top: 316px;
+    left: 497px;
+    width: 200px;
+    color: white;
+    font-size: 25px;
+    text-align: right;
+}
+
+.txt-stack {
+    position: absolute;
+    top: 316px;
+    left: 673px;
+    width: 200px;
+    color: white;
+    font-size: 25px;
+    text-align: right;
+}
+
+.txt-worktime {
+    position: absolute;
+    top: 868px;
+    left: 155px;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+}
+
+.txt-arctime {
+    position: absolute;
+    top: 868px;
+    left: 347px;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+}
+
+.txt-arcperc {
+    position: absolute;
+    top: 868px;
+    left: 541px;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+}
+
+.txt-perfperc {
+    position: absolute;
+    top: 868px;
+    left: 735px;
+    width: 200px;
+    color: white;
+    font-size: 30px;
+}
+
+.minmap {
+    position: absolute;
+    overflow: auto;
+    text-align: left;
+    padding-left: 43px;
+    bottom: 42px;
+}
+
+.mainmap {
+    position: absolute;
+    top: 330px;
+    left: 47px;
+}
+
+.maintable {
+    background-color: #000000;
+    position: absolute;
+    width: 717px;
+    height: 220px;
+    left: 320px;
+    bottom: 45px;
+}
+
+.subtitle {
+    position: absolute;
+    overflow: auto;
+    text-align: left;
+    padding-left: 43px;
+    bottom: 272px;
+    left: 480px;
+}
+
+.monitoringText {
+    float: left;
+    color: white;
+    font-size: 4em;
+}
+
+.subTable {
+    position: absolute;
+    left: 310px;
+    bottom: 42px;
+}
+
+
+/*******************
+    myChart
+********************/
+
+#grid {
+    -moz-transform: translate(1px, 0px);
+    -ms-transform: translate(1px, 0px);
+    -webkit-transform: translate(1px, 0px);
+    transform: translate(1px, 0px);
+}
+
+
+/* GRAPH - 1 */
+
+#graph-1 {
+    stroke: url(#gradient-1);
+    stroke-width: 1.5;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    -moz-animation: lineani 1.3s linear forwards;
+    -webkit-animation: lineani 1.3s linear forwards;
+    animation: lineani 1.3s linear forwards;
+}
+
+#graph-1-container {
+    position: absolute;
+    width: 540px;
+    top: 500px;
+    left: 75px;
+}
+
+#graph-2-container {
+    position: absolute;
+    width: 540px;
+    top: 500px;
+    left: 490px;
+}
+
+#graph-2 {
+    stroke: url(#gradient-2);
+    stroke-width: 1.5;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    -moz-animation: lineani 1.3s linear forwards;
+    -webkit-animation: lineani 1.3s linear forwards;
+    animation: lineani 1.3s linear forwards;
+}
+
+#poly-1 {
+    fill: url(#gradient-3);
+}
+
+#poly-2 {
+    fill: url(#gradient-4);
+}
+
+@-moz-keyframes lineani {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-webkit-keyframes lineani {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes lineani {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.underlay {
+    stroke-width: 5;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #24303a;
+}
+
+#circle-graph-1 {
+    stroke: url(#gradient-1);
+    stroke-width: 5;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.chart-circle {
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+#circle-graph-2 {
+    stroke: url(#gradient-2);
+    stroke-width: 5;
+    fill: transparent;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.charts-container {
+    padding: 20px;
+    width: 100%;
+    max-width: 1024px;
+    display: inline-block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.chart {
+    color: #4a667a;
+    text-align: left;
+    position: relative;
+    height: auto;
+    display: inline-block;
+    float: left;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 10px;
+    padding: 15px 20px 65px 20px;
+}
+
+.chart.circle {
+    padding: 15px 20px 40px 20px;
+}
+
+@media screen and (max-width: 700px) {
+    .chart {
+        width: calc(100% - 20px);
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .chart {
+        width: calc(50% - 20px);
+    }
+}
+
+.title {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.chart-circle {
+    display: inline-block;
+    position: relative;
+}
+
+.chart-svg {
+    position: relative;
+}
+
+.circle-percentage {
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width: 480px) {
+    .circle-percentage {
+        font-size: 32px;
+    }
+}
+
+.align-center {
+    text-align: center;
+}
+
+.chart-line {
+    width: 80%;
+}
+
+.valueX {
+    font-size: 14px;
+}
+
+.chart-values {
+    text-align: right;
+    font-size: 18px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+}
+
+.h-value {
+    -moz-transition: ease-in-out 700ms;
+    -o-transition: ease-in-out 700ms;
+    -webkit-transition: ease-in-out 700ms;
+    transition: ease-in-out 700ms;
+    opacity: 0;
+}
+
+.h-value.visible {
+    opacity: 1;
+}
+
+.percentage-value {
+    -moz-transition: ease-in-out 700ms;
+    -o-transition: ease-in-out 700ms;
+    -webkit-transition: ease-in-out 700ms;
+    transition: ease-in-out 700ms;
+    color: #48c15e;
+    margin-top: 2px;
+    opacity: 0;
+}
+
+.percentage-value.negative {
+    color: #ef6670;
+}
+
+.percentage-value.visible {
+    opacity: 1;
+}
+
+.total-gain {
+    color: white;
+    font-size: 48px;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 28px 0 0 28px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.triangle.red {
+    border-color: transparent transparent transparent #ef6670;
+}
+
+.triangle.green {
+    border-color: transparent transparent transparent #48c15e;
+}
+
+.horizontal,
+.vertical {
+    stroke-width: 0.1;
+    stroke: #4a667a;
+}
+
+
+/* CLEARFIX HELPER */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.cf {
+    *zoom: 1;
+}
+
+
+/*IRRELEVANT CSS*/
+
+.followlinks {
+    position: fixed;
+    right: 35px;
+    bottom: 15px;
+    display: table;
+}
+
+.followlinks a {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    color: white;
+}
+
+.followlinks a svg path {
+    fill: white;
+}
+
+.heartIt {
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+
+.heartIt p {
+    font-size: 24px;
+    line-height: 40px;
+}
+
+.heartIt img {
+    width: 64px;
+    height: auto;
+    opacity: 0.7;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.original {
+    color: #ef6670;
+    font-size: 14px;
+}
+
+
+/*
+ display3.html
+*/
+
+.box {
+    position: relative;
+    width: 100%;
+    /* 원하는 너비 */
+}
+
+.box:before {
+    content: "";
+    display: block;
+    padding-top: 56.25%;
+    /* 1:1 비율 */
+}
+
+.content {
+    position: absolute;
+    background-image: url('images/bg3.png');
+    background-size: cover;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

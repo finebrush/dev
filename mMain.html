@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="./css/myStyle.css">
+        <link rel="stylesheet" href="./css/webglStyle.css">
+
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase-database.js"></script>
+
+
+  </head>
+  <body style="margin: 0px;">
+
+    <div class="mainbgpic">
+
+        <!-- Date / Time -->
+        <div class="dateStyle" id="dateStyle" style="position:absolute; right:274px; top:47px;">
+            <font style="font-size:1.3em; font-weight:bold; color:#f3c869;" > DATE </font> </div>
+        <div class="dateText" style="position:absolute; right:215px; top:67px;">
+            <font id="dateText" style="font-size:1.8em; font-weight:300; color:#fff;" > 2019.9.26. </font> </div>
+        <div class="timeStyle" id="timeStyle" style="position:absolute; right:105px; top:47px;">
+            <font style="font-size:1.3em; font-weight:bold; color:#f9f20c;" > TIME </font> </div>
+        <div class="timeText" style="position:absolute; right:60px; top:67px;">
+            <font id="timeText" style="font-size:1.8em; font-weight:300; color:#fff;" > 20:35:19 </font> </div>
+
+        <!-- Monitoring -->
+        <div id="mtGroup" style="position: absolute; top:30px; left:220px; width:100%;">
+            <div class="mtTotal" id="mtTotal1" style="position: absolute; top:0px;">
+                <div class="monitoringText" style="padding-right:220px;" id="tPart1"><font>로봇</font></div>
+                <div class="monitoringText" style="padding-right:160px;" id="tNum1"><font>10</font></div>
+                <div class="monitoringText" style="padding-right:100px;" id="tWorktime1"><font>20:14:35</font></div>
+                <div class="monitoringText" style="padding-right:145px;" id="tArctime1"><font>10:22:24</font></div>
+                <div class="monitoringText" style="padding-right:150px;" id="tArcper1"><font>42%</font></div>
+                <div class="monitoringText" id="tArcNum1"><font>17 / 38</font></div>
+            </div>
+            <div class="mtTotal" id="mtTotal2" style="position: absolute; top:90px;">
+                <div class="monitoringText" style="padding-right:220px;" id="tPart2"><font>토치</font></div>
+                <div class="monitoringText" style="padding-right:160px;" id="tNum2"><font>48</font></div>
+                <div class="monitoringText" style="padding-right:100px;" id="tWorktime2"><font>15:12:41</font></div>
+                <div class="monitoringText" style="padding-right:145px;" id="tArctime2"><font>09:12:48</font></div>
+                <div class="monitoringText" style="padding-right:150px;" id="tArcper2"><font>40%</font></div>
+                <div class="monitoringText" id="tArcNum2"><font>17 / 38</font></div>
+            </div>
+            <div class="mtTotal" id="mtTotal3" style="position: absolute; top:180px;">
+                <div class="monitoringText" style="padding-right:220px;" id="tPart3"><font>합계</font></div>
+                <div class="monitoringText" style="padding-right:160px;" id="tNum3"><font>90</font></div>
+                <div class="monitoringText" style="padding-right:100px;" id="tWorktime3"><font>35:26:56</font></div>
+                <div class="monitoringText" style="padding-right:145px;" id="tArctime3"><font>20:27:49</font></div>
+                <div class="monitoringText" style="padding-right:150px;" id="tArcper3"><font>45%</font></div>
+                <div class="monitoringText" id="tArcNum3"><font>17 / 38</font></div>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="mainmap" id="mainmap"><img src="./images/mapbackground.png"></div>
+
+        <!-- Scroll Button -->
+        <div id="Scrollbtn" style="position:absolute; width:60px; height:150px; top:150px; left:50px; z-index:99;"></div>
+
+        <!-- Move page Button -->
+        <div id="pagebtn" style="position:absolute; width:190px; height:60px; top:400px; left:400px;z-index:1024;"></div>
+
+    <script>
+        function updateClock() {
+            var d = new Date();
+            var pickdate = document.getElementById('dateText');
+            var picktime = document.getElementById('timeText');
+            //console.log(pickdate.innerHTML);
+            pickdate.innerHTML = d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate() + '.';
+            picktime.innerHTML = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+        }
+        setInterval(updateClock, 1000);
+        
+        //div animation
+        var postop = 30;
+        var anidiv = document.getElementById('mtGroup');
+        $("#mtTotal1").hide();
+        $("#mtTotal2").hide();
+        $("#mtTotal3").show();
+
+        function myTimer(){ 
+            if (postop < 90){
+                $("#mtGroup").animate({
+                    top: '+=90px',
+                });
+                postop += 30;
+            }else{
+                $("#mtGroup").animate({
+                    top: '-=180px',
+                });
+                //anidiv.style.top = "30px";
+                postop = 30;
+            }
+            
+            console.log(postop);
+
+            if (postop == 30){
+                $("#mtTotal1").hide();
+                $("#mtTotal2").hide();
+                $("#mtTotal3").show();
+            }else if(postop == 60){
+                $("#mtTotal1").hide();
+                $("#mtTotal2").show();
+                $("#mtTotal3").hide();
+            }else if(postop == 90){
+                $("#mtTotal1").show();
+                $("#mtTotal2").hide();
+                $("#mtTotal3").hide();
+            }
+        }
+        setInterval(myTimer, 3500);
+
+        $("#Scrollbtn").click(function(){
+            myTimer();
+        });
+    
+        $("#pagebtn").click(function(){
+            var url = "http://localhost/hyundai/monitoring.html";
+            window.location.href = url;
+            console.log("ok!");
+        });
+
+    </script>
+
+    </body>
+</html>
